@@ -10,10 +10,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 export class IdentityService {
   private baseUrl = 'https://localhost:5001/api/v1/';
-
-  constructor(
-    private http: HttpClient, 
-    public jwtHelper: JwtHelperService) { }
+  private jwtHelper: JwtHelperService = new JwtHelperService()
+  
+  constructor(private http: HttpClient) { }
 
   login(model: loginRequest){
     return this.http.post<loginResponse>(this.baseUrl + 'identity/login', model, {
