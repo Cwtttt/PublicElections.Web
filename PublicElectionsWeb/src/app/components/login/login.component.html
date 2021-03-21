@@ -5,10 +5,25 @@
 
       <label for="email_input" class="input_label">Email</label>
       <input type="text" formControlName="Email" id="email_input" class="input">
+      <div *ngIf="form.controls.Email.invalid && (form.controls.Email.dirty || form.controls.Email.touched)"
+        class="alert alert-danger">
+
+        <label *ngIf="form.controls.Email.errors.required" style="color: red;">
+          Name is required.
+        </label>
+
+      </div>
 
       <label for="password_input" class="input_label">Hasło</label>
       <input type="password" formControlName="Password" id="password_input" class="input">
+      <div *ngIf="form.controls.Email.invalid && (form.controls.Email.dirty || form.controls.Email.touched)"
+      class="alert alert-danger">
 
+      <label *ngIf="form.controls.Email.errors.required" style="color: red;">
+        Name is required.
+      </label>
+
+    </div>
     </div>
     <input type="submit" class="btn btn--white" value="Zaloguj">
   </form>

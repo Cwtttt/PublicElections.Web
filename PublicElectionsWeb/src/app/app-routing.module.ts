@@ -4,9 +4,21 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  { 
+    path: '', 
+    redirectTo: 'dashboard', 
+    pathMatch: 'prefix' 
+  },
+
+  { 
+    path: 'register', 
+    component: RegisterComponent 
+  },
+
+  { 
+    path: 'dashboard', 
+    component: DashboardComponent 
+  }
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { IdentityService } from 'src/app/services/identity/identity.service';
+import { loginRequest } from 'src/app/models/request/loginRequest';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,16 +18,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup(
       {
-        Email: new FormControl(''),
-        Password: new FormControl(''),
+        Email: new FormControl('', [Validators.required, Validators.email]),
+        Password: new FormControl('', Validators.required),
       }
     )
   }
 
   logIn(formData){
     debugger;
-    const data = JSON.stringify(formData.value);
-    this._identityService.login(data).subscribe(response => {
+    if(formData.status == "INVALID"){
+      alert("invalid data");
+      return;
+    }
+    var request:loginRequest = new loginRequest();
+    request.Email = formData.controls.Email.value;
+    request.Password = formData.controls.Password.value;
+    this._identityService.login(request).subscribe(response => {
       console.log(response);
     })
   }
