@@ -1,5 +1,5 @@
 export interface loginResponse{
-    Token:string,
+    token:string,
     FirstName:string,
     LastName:string,
     UserId:string

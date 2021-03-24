@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { IdentityService } from 'src/app/services/identity/identity.service';
 import { loginRequest } from 'src/app/models/request/loginRequest';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   constructor(
     private _http: HttpClient,
-    private _identityService: IdentityService
+    private _identityService: IdentityService,
+    public router:Router
     ) { }
 
   ngOnInit(): void {
@@ -25,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(formData){
-    debugger;
     if(formData.status == "INVALID"){
       alert("invalid data");
       return;
@@ -34,7 +35,13 @@ export class LoginComponent implements OnInit {
     request.Email = formData.controls.Email.value;
     request.Password = formData.controls.Password.value;
     this._identityService.login(request).subscribe(response => {
-      console.log(response);
+      debugger;
+      if(response.token){
+        debugger;
+        console.log(response);
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['elections']);
+      }
     })
   }
 }

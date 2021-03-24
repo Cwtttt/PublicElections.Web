@@ -10,6 +10,7 @@ export class AuthGuardService implements CanActivate {
     public router:Router) { }
 
   canActivate(): boolean{
+    debugger;
     if(!this._identitySercive.isAuthenticated()){
       this.router.navigate(['dashboard']);
       return false;

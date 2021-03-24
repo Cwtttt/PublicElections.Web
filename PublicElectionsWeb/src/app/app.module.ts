@@ -10,6 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component'; 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { ElectionsListComponent } from './components/elections-list/elections-list.component';
+import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { LoginComponent } from './components/login/login.component';
     RegisterComponent,
     HeaderComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ElectionsListComponent
   ], 
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     JwtModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 }) 
 export class AppModule { }
