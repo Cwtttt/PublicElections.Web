@@ -12,7 +12,7 @@ const routes: Routes = [
     redirectTo: 'dashboard', 
     pathMatch: 'prefix' 
   },
-
+  //guest guard - jeśłi jestes zalogowany redirect na elections else return true
   { 
     path: 'register', 
     component: RegisterComponent 

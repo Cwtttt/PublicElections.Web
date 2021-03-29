@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  searchControl: FormControl = new FormControl('dupa');
   constructor(
     private _http: HttpClient,
     private _identityService: IdentityService,
@@ -24,24 +25,25 @@ export class LoginComponent implements OnInit {
         Password: new FormControl('', Validators.required),
       }
     )
+    this.searchControl.valueChanges.subscribe((data)=>console.log(data));
   }
 
   logIn(formData){
+    console.log(this.form);
     if(formData.status == "INVALID"){
       alert("invalid data");
       return;
     }
-    var request:loginRequest = new loginRequest();
-    request.Email = formData.controls.Email.value;
-    request.Password = formData.controls.Password.value;
-    this._identityService.login(request).subscribe(response => {
+
+    this._identityService.login(this.form.value).subscribe(response => {
       debugger;
       if(response.token){
-        debugger;
-        console.log(response);
-        localStorage.setItem('token', response.token);
+  
         this.router.navigate(['elections']);
       }
+    },
+    (error)=> {
+      console.log('error in comp');
     })
   }
 }
