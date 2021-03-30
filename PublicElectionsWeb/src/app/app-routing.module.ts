@@ -3,25 +3,34 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
 import { RegisterComponent } from './components/register/register.component';
+
 import { 
   AuthGuardService as AuthGuard 
 } from './services/auth-guard/auth-guard.service';
+
+import { 
+  NotAuthGuardService as NotAuthGuard 
+} from './services/not-auth-guard/not-auth-guard.service';
+
 const routes: Routes = [
   { 
     path: '', 
     redirectTo: 'dashboard', 
     pathMatch: 'prefix' 
   },
-  //guest guard - jeśłi jestes zalogowany redirect na elections else return true
+
   { 
     path: 'register', 
-    component: RegisterComponent 
+    component: RegisterComponent,
+    canActivate: [NotAuthGuard]
   },
 
   { 
     path: 'dashboard', 
-    component: DashboardComponent 
+    component: DashboardComponent,
+    canActivate: [NotAuthGuard]
   },
+
   {
     path: 'elections',
     component: ElectionsListComponent,

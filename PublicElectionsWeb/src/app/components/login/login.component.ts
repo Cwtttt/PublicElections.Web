@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  searchControl: FormControl = new FormControl('dupa');
   constructor(
     private _http: HttpClient,
     private _identityService: IdentityService,
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
         Password: new FormControl('', Validators.required),
       }
     )
-    this.searchControl.valueChanges.subscribe((data)=>console.log(data));
   }
 
   logIn(formData){

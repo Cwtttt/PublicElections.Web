@@ -2,7 +2,6 @@
   <h2 class="login_container_heading">Zaloguj się do platformy</h2>
   <form [formGroup]="form" (ngSubmit)="logIn(form)">
     <div class="form-group" >
-      <input type="text" [formControl]="searchControl" placeholder="Szukaj" class="input">
 
       <label for="email_input" class="input_label">Email</label>
       <input type="text" formControlName="Email" id="email_input" class="input">

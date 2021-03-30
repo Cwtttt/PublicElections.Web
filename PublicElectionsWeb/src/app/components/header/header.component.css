@@ -1,0 +1,9 @@
+.logOutBtn{
+    background: white;
+    color: #1d7fff;;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 50px;
+    position: absolute;
+    right: 0;
+}

@@ -1,10 +1,9 @@
-<div class="list_container">
+<div *ngIf="elections.length > 0" class="list_container">
+  <div *ngFor="let election of elections">
     <div class="list_element">
-      <p class="list_element_text">Wybory na prezydenta Rzeczpospolitej Polski w roku 2021, tura nr. 2</p>
-      <a href="vote.html" class="list_element_text list_element_text_blue list_link">Oddaj głos</a>
-    </div>
-    <div class="list_element">
-        <p class="list_element_text"> Wybory na prezydenta Rzeczpospolitej Polski w roku 2021, tura nr. 1 </p>
-        <p class=" list_element_text list_element_text_blue">Już oddano głos</p>
+      <p class="list_element_text">{{election.name}}</p>
+      <a *ngIf="election.canParticipate; else elseBlock" href="vote.html" class="list_element_text list_element_text_blue list_link">Oddaj głos</a>
+      <ng-template #elseBlock><p class=" list_element_text list_element_text_blue">Już oddano głos</p></ng-template>
     </div>
   </div>
+</div>

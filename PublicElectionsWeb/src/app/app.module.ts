@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { NotAuthGuardService } from './services/not-auth-guard/not-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
     HttpClientModule,
     JwtModule
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 }) 
 export class AppModule { }

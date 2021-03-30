@@ -1,3 +1,4 @@
 <header>
     <span class="logo">IPW</span><h1>Internetowa platforma wyborcza</h1>
+    <button *ngIf="isAuthenticated" class="btn logOutBtn" (click)="logOut()">Wyloguj</button>
 </header>
