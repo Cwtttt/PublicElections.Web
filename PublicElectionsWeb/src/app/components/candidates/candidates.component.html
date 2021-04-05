@@ -3,7 +3,6 @@
       <div>
         <a href="elections" class="list_link blue"> Wróć do listy wyborów</a>
       </div>
-      <h2>Lista wyborów w których możesz wziąć udział </h2>
     </div>
     <div class="vote_bottom">
       <div class="vote_table ">
@@ -21,7 +20,10 @@
                   </ng-container >
             </table>
           </div>
-          <input (click)="openDialog()" type="submit" value="Zapisz wybór" class="btn">
+          <ng-container *ngIf="myCandidate; else grayButton">
+            <button (click)="openDialog()" type="submit" class="btn">Zapisz wybór</button>
+          </ng-container>
+          <ng-template #grayButton><button (click)="openDialog()" type="submit" class="btn btn-gray">Zapisz wybór</button></ng-template>
         </form>
       </div>
       <div class="vote_manual">

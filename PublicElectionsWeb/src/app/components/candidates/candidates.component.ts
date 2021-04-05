@@ -19,11 +19,11 @@ export class CandidatesComponent implements OnInit {
   public myCandidate: Candidate;
   private electionId: number;
   constructor(
-    private route: ActivatedRoute, 
-    private _electionsService:ElectionsService,
-    public dialog: MatDialog,
     private _votesService: VotesService,
-    private router: Router) { }
+    private _electionsService:ElectionsService,
+    private route: ActivatedRoute, 
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.route.paramMap.pipe(
@@ -38,6 +38,10 @@ export class CandidatesComponent implements OnInit {
   }
 
   choose(candidate: Candidate){
+    if(this.myCandidate && candidate.id === this.myCandidate.id) {
+      this.myCandidate = null;
+      return;
+    }
     this.myCandidate = candidate;
     this.candidates.forEach((x) => {
       if(x.id !== candidate.id){
@@ -49,7 +53,7 @@ export class CandidatesComponent implements OnInit {
   openDialog(){
     if(!this.myCandidate) return;
     let dialogRef =this.dialog.open(ConfirmDialogComponent, 
-      { data: { title: this.myCandidate.name }});
+      { data: { title: this.myCandidate.name }, panelClass:'custom-dialog-container'});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result === 'true') {

@@ -235,7 +235,7 @@ h2{
 .list_link{
     text-decoration: none;
     display:block;
-    max-width:250px;
+    max-width:181px;
 }
 .list_link::after{
     content:' ';
@@ -292,7 +292,9 @@ input[type=checkbox]{
 .vote_manual_list li{
     margin-bottom:0.6rem;
 }
-
+.custom-dialog-container .mat-dialog-container{
+    border-radius: 10px !important;
+}
 
 @media screen and (max-width: 1400px){
    :root{

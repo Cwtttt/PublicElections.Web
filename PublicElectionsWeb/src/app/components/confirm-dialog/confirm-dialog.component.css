@@ -1,0 +1,19 @@
+.mat-dialog-title {
+    text-align: center;
+}
+
+.confirm-btn{
+    margin-left: auto;
+    margin-right: 0;
+    border-color: #1d7fff;
+    border-style: solid;
+}
+
+.cancel-btn{
+    background-color: white;
+    color: red;
+    border: 1px;
+    border-style: solid;
+    border-color: red;
+}
+
