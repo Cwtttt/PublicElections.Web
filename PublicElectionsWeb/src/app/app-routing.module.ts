@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CandidatesComponent } from './components/candidates/candidates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -35,6 +36,12 @@ const routes: Routes = [
     path: 'elections',
     component: ElectionsListComponent,
     canActivate: [AuthGuard] 
+  },
+
+  {
+    path: 'candidates/:electionid',
+    component: CandidatesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

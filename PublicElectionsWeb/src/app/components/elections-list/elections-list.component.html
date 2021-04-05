@@ -2,7 +2,7 @@
   <div *ngFor="let election of elections">
     <div class="list_element">
       <p class="list_element_text">{{election.name}}</p>
-      <a *ngIf="election.canParticipate; else elseBlock" href="vote.html" class="list_element_text list_element_text_blue list_link">Oddaj głos</a>
+      <a *ngIf="election.canParticipate; else elseBlock" (click)="goToCandidates(election.id)" class="list_element_text list_element_text_blue list_link">Oddaj głos</a>
       <ng-template #elseBlock><p class=" list_element_text list_element_text_blue">Już oddano głos</p></ng-template>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { electionResponse } from 'src/app/models/response/electionResponse';
+import { Router } from '@angular/router';
+import { ElectionResponse } from 'src/app/models/response/electionResponse';
 import { ElectionsService } from 'src/app/services/elections/elections.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { ElectionsService } from 'src/app/services/elections/elections.service';
   styleUrls: ['./elections-list.component.css']
 })
 export class ElectionsListComponent implements OnInit {
-  public elections:electionResponse [] = new Array<electionResponse>();
+  public elections:ElectionResponse [] = new Array<ElectionResponse>();
 
-  constructor(private _electionsService:ElectionsService) { }
+  constructor(private _electionsService:ElectionsService, private router:Router) { }
 
   ngOnInit(): void {
     this._electionsService.getAllElections().subscribe((response) =>{
@@ -18,5 +19,9 @@ export class ElectionsListComponent implements OnInit {
       console.log(response);
     }
   )}
+
+  goToCandidates(electionId:number){
+    this.router.navigate([`candidates/${electionId}`]);
+  }
 
 }

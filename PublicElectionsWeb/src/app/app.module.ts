@@ -12,7 +12,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
-import { NotAuthGuardService } from './services/not-auth-guard/not-auth-guard.service';
+import { CandidatesComponent } from './components/candidates/candidates.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'
+
 
 @NgModule({
   declarations: [
@@ -21,15 +25,20 @@ import { NotAuthGuardService } from './services/not-auth-guard/not-auth-guard.se
     HeaderComponent,
     DashboardComponent,
     LoginComponent,
-    ElectionsListComponent
+    ElectionsListComponent,
+    CandidatesComponent,
+    ConfirmDialogComponent
   ], 
+  entryComponents:[ConfirmDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    JwtModule
+    JwtModule,
+    NoopAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuardService

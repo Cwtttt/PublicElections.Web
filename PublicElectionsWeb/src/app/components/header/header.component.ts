@@ -8,14 +8,15 @@ import { IdentityService } from 'src/app/services/identity/identity.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public isAuthenticated:boolean = false;
-  constructor(private _identityService:IdentityService) {
-   }
+  constructor(private _identityService:IdentityService) { }
 
-  ngOnInit(): void {
-    this.isAuthenticated = this._identityService.isAuthenticated();
-  }
+  ngOnInit(): void { }
+
   logOut(){
     this._identityService.logOut();
+  }
+
+  isLogged(): boolean{
+    return this._identityService.isAuthenticated();
   }
 }

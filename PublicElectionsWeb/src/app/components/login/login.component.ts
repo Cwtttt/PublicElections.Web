@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { IdentityService } from 'src/app/services/identity/identity.service';
-import { loginRequest } from 'src/app/models/request/loginRequest';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
@@ -12,7 +10,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   constructor(
-    private _http: HttpClient,
     private _identityService: IdentityService,
     public router:Router
     ) { }
@@ -34,7 +31,6 @@ export class LoginComponent implements OnInit {
     }
 
     this._identityService.login(this.form.value).subscribe(response => {
-      debugger;
       if(response.token){
   
         this.router.navigate(['elections']);

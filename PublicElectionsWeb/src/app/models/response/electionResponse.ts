@@ -1,4 +1,4 @@
-export class electionResponse{
+export class ElectionResponse{
     Id:number
     Name:string
     StartDate:Date

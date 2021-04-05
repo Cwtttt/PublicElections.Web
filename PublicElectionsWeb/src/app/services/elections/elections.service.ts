@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { electionResponse } from 'src/app/models/response/electionResponse';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Candidate } from 'src/app/models/candidate';
+import { CandidateResponse } from 'src/app/models/response/candidateResponse';
+import { ElectionResponse } from 'src/app/models/response/electionResponse';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,7 +17,7 @@ export class ElectionsService {
    }
 
   getAllElections(){
-    return this.http.get<electionResponse[]>(environment.apiBaseUrl + 'Elections/me', {
+    return this.http.get<ElectionResponse[]>(environment.apiBaseUrl + 'Elections/me', {
       headers:{
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.userToken}`
@@ -28,5 +30,19 @@ export class ElectionsService {
       console.log(error);
       return throwError(error);
     }))
-}
+  }
+
+  getAllElectionCandidates(electionId:number){
+    return this.http.get<Candidate[]>(environment.apiBaseUrl + `elections/${electionId}/candidates`, {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    }).pipe( 
+      map((candidates: CandidateResponse[]) => candidates
+      .map((candidate: CandidateResponse) => {
+        return new Candidate(candidate.id, candidate.name, candidate.electionId);
+      }))
+    )
+  }
 }

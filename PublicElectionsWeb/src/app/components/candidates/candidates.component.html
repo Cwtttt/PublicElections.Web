@@ -1,0 +1,42 @@
+<main class="main_vote">
+    <div class="vote_top">
+      <div>
+        <a href="elections" class="list_link blue"> Wróć do listy wyborów</a>
+      </div>
+      <h2>Lista wyborów w których możesz wziąć udział </h2>
+    </div>
+    <div class="vote_bottom">
+      <div class="vote_table ">
+        <h3>Lista kandydatów</h3>
+        <form>
+          <div *ngIf="candidates.length > 0">
+            <table class="vote_table">
+                  <ng-container  *ngFor="let candidate of candidates">
+                    <tr>
+                      <td>{{candidate.name}}</td>
+                      <td>
+                        <input type="checkbox" (change)="choose(candidate)" [(ngModel)]="candidate.selected" [ngModelOptions]="{standalone: true}"/>
+                      </td>
+                    </tr>
+                  </ng-container >
+            </table>
+          </div>
+          <input (click)="openDialog()" type="submit" value="Zapisz wybór" class="btn">
+        </form>
+      </div>
+      <div class="vote_manual">
+        <h3 class="text_center white ">Instrukcja głosowania</h3>
+        <ol class="vote_manual_list">
+          <li>Znajdź swojego kandydata na liście.</li>
+          <li>Zaznacz kwadrat obok swojego kandydata.</li>
+          <li>Możesz wybrać tylko 1 kandydata na
+            którego oddasz swój głos.</li>
+          <li>Po zaznaczeniu swojego wyboru kliknij
+            "zapisz wybór". </li>
+          <li>Po zatwierdzeniu wyboru nie będzie możliwa
+            zmiana wybranego kandydata.</li>
+        </ol>
+      </div>
+    </div>
+  
+  </main>
