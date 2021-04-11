@@ -467,12 +467,19 @@ input[type=checkbox]{
     width: 350px;
 }
 
-/* .custom-dialog-container-edit-election > .mat-form-field-flex ~ .mat-form-field-flex{
-    width: 250px;
-} */
-
-
 .custom-dialog-container-edit-election .mat-dialog-container{
+    border-radius: 10px !important;
+}
+
+.custom-dialog-container-add-election{
+    width: 400px;
+}
+
+.custom-dialog-container-add-election .mat-form-field-flex{
+    width: 350px;
+}
+
+.custom-dialog-container-add-election .mat-dialog-container{
     border-radius: 10px !important;
 }
 

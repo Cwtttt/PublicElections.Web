@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
@@ -28,7 +27,8 @@ import {
   NgxMatTimepickerModule 
 } from '@angular-material-components/datetime-picker';
 import {  MatDatepickerModule } from '@angular/material/datepicker';
-import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
+import { AddElectionModalComponent } from './components/admin-components/add-election-modal/add-election-modal.component';
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -42,11 +42,13 @@ import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
     RegisterSuccessComponent,
     EmailConfirmedComponent,
     AdminPanelComponent,
-    EditElectionModalComponent
+    EditElectionModalComponent,
+    AddElectionModalComponent
   ], 
   entryComponents:[
     ConfirmDialogComponent, 
-    EditElectionModalComponent
+    EditElectionModalComponent,
+    AddElectionModalComponent
   ],
   imports: [
     BrowserModule,
@@ -65,21 +67,7 @@ import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
     MatDatepickerModule
   ],
   providers: [
-    AuthGuardService,
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: ['l', 'LL'],
-        },
-        display: {
-          dateInput: 'L',
-          monthYearLabel: 'd.M.yy h:mm',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'd.M.yy h:mm',
-        },
-      },
-    },
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 }) 

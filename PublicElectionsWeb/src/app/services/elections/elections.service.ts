@@ -7,6 +7,8 @@ import { Election } from 'src/app/models/election';
 import { CandidateResponse } from 'src/app/models/response/candidateResponse';
 import { ElectionResponse } from 'src/app/models/response/electionResponse';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
+import { ElectionRequest } from 'src/app/models/response/electionRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -48,12 +50,26 @@ export class ElectionsService {
   }
 
   update(election: Election){
-    debugger;
     return this.http.put(environment.apiBaseUrl + `elections/${election.id}`, 
     {
       "name": election.name,
-      "startDate": election.startDate,
-      "endDate": election.endDate
+      "startDate": moment(election.startDate).format(),
+      "endDate": moment(election.endDate).format()
+    },
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    })
+  }
+
+  add(election: ElectionRequest){
+    return this.http.post(environment.apiBaseUrl + `elections`, 
+    {
+      "name": election.name,
+      "startDate": moment(election.startDate).format(),
+      "endDate": moment(election.endDate).format()
     },
     {
       headers:{

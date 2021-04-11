@@ -10,6 +10,7 @@ import { ElectionResponse } from 'src/app/models/response/electionResponse';
 })
 export class EditElectionModalComponent implements OnInit {
   form: FormGroup;
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {election: ElectionResponse},
     private dialogRef: MatDialogRef<EditElectionModalComponent>) { }
