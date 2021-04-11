@@ -1,0 +1,46 @@
+
+<h2 mat-dialog-title>
+</h2>
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field class="nazwa-wyborow">
+        <input type="text" matInput
+                placeholder="Nazwa wyborów"
+                formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput 
+        type="datetime"
+        [ngxMatDatetimePicker]="pickerFrom"
+        placeholder="Data rozpoczęcia"
+        formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerFrom>
+          <ng-template>
+            <span>OK</span>
+          </ng-template>
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput 
+        type="datetime"
+        [ngxMatDatetimePicker]="pickerTo"
+        placeholder="Data zakończenia"
+        formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerTo [showSeconds]="false">
+          <ng-template>
+            <span>OK</span>
+          </ng-template>
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="cancel()">Anuluj</button>
+    <button class="mat-raised-button mat-primary" (click)="confirm()">Zapisz</button>
+</mat-dialog-actions>

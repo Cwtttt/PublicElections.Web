@@ -1,0 +1,57 @@
+<body class="admin_body">
+    <main class="main--admin">
+      <section class="wrapTopBar">
+        <h1>Wybory</h1>
+        <div>
+          <button id="addElections" class="wrapTopBar__btn">Dodaj wybory</button>
+          <button class="wrapTopBar__btn btn2">Usuń zaznaczone</button>
+        </div>
+      </section>
+      
+      <section class="wrapContant">
+        <form action="">
+          <table class="vote_table vote_table--admin">
+            <tr>
+              <th></th>
+              <th>Nazwa wyborów</th>
+              <th>Początek</th>
+              <th>Koniec</th>
+              <th>Akcje</th>
+            </tr>
+            <ng-container *ngFor="let election of elections">
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>{{election.name}}</td>
+                <td>{{election.startDate | date:'d.M.yy  h:mm'}}</td>
+                <td>{{election.endDate | date:'d.M.yy  h:mm'}}</td>
+                <td>
+                  <a class="edit" (click)="electionEdit(election)">edycja</a>
+                  <a class="edit">kandydaci</a>
+                  <a class="edit">wyniki</a>
+
+                </td>
+              </tr>
+            </ng-container>
+          </table>
+        </form>
+      </section>
+    </main>
+
+    </body>
+    <script>
+        let modal = document.querySelector('.admin__modal__container');
+const showModal = () => {
+  modal.style.display = 'block';
+}
+const hideModal = () => {
+  modal.style.display = 'none';
+}
+
+document.getElementById('addElections').addEventListener('click', showModal);
+document.getElementById('addElectionsCancel').addEventListener('click', hideModal);
+document.querySelectorAll('.edit').forEach((value)=> {
+  value.addEventListener('click', showModal);
+  
+});
+
+    </script>

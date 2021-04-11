@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Candidate } from 'src/app/models/candidate';
+import { Election } from 'src/app/models/election';
 import { CandidateResponse } from 'src/app/models/response/candidateResponse';
 import { ElectionResponse } from 'src/app/models/response/electionResponse';
 import { environment } from 'src/environments/environment';
@@ -44,5 +45,21 @@ export class ElectionsService {
         return new Candidate(candidate.id, candidate.name, candidate.electionId);
       }))
     )
+  }
+
+  update(election: Election){
+    debugger;
+    return this.http.put(environment.apiBaseUrl + `elections/${election.id}`, 
+    {
+      "name": election.name,
+      "startDate": election.startDate,
+      "endDate": election.endDate
+    },
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    })
   }
 }

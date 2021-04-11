@@ -1,47 +1,51 @@
 <main class="register_main">
     <h2 class="register_heading">Rejestracja do IPW</h2>
-    <form action="" method="post" class="form">
+    <form [formGroup]="form" (ngSubmit)="register(form)" class="form">
         <div class="registerForm">
             <div class="col">
                 <div class="inputContainer">
                     <label for="name_input" class="input_label">Imie</label>
-                    <input type="text" id="name_input" class="input input--register">
+                    <input type="text" formControlName="FirstName" id="name_input" class="input input--register">
                 </div>
                 <div class="inputContainer">
                     <label for="surname_input" class="input_label">Nazwisko</label>
-                    <input type="text" id="surname_input" class="input input--register">
+                    <input type="text" formControlName="LastName" id="surname_input" class="input input--register">
                 </div>
                 <div class="inputContainer">
                     <label for="pesel_input" class="input_label">Pesel</label>
-                    <input type="text" id="pesel_input" class="input input--register">
+                    <input type="text" formControlName="Pesel" id="pesel_input" class="input input--register">
                 </div>
                 <div class="inputContainer">
                     <label for="id_nr_input" class="input_label">Nr. dowodu</label>
-                    <input type="text" id="id_nr_input" class="input input--register">
+                    <input type="text" formControlName="IdNumber" id="id_nr_input" class="input input--register">
+                </div>
+                <div class="inputContainer">
+                    <label for="surname_input" class="input_label">Email</label>
+                    <input type="text" formControlName="Email" id="surname_input" class="input input--register">
                 </div>
             </div>
             <div class="col">
                 <div class="inputContainer">
                     <label for="street_input" class="input_label">Ulica</label>
-                    <input type="text" id="street_input" class="input input--register">
+                    <input type="text" formControlName="Street" id="street_input" class="input input--register">
                 </div>
                 <div class="inputContainer ">
                     <div class="input_half_container">
                         <label for="homeNr_input" class="input_label test">Nr. domu</label>
-                        <input type="text" id="homeNr_input" class="input input--register input--half">
+                        <input type="text" formControlName="HauseNumber" id="homeNr_input" class="input input--register input--half">
                     </div>
                     <div class="input_half_container input_half_m">
                         <label for="flatNr_input" class="input_label test">Nr.mieszkania</label>
-                        <input type="text" id="flatNr_input" class="input input--register input--half">
+                        <input type="text" formControlName="ApartmentNumber" id="flatNr_input" class="input input--register input--half">
                     </div>
                 </div>
                 <div class="inputContainer">
                     <label for="postCode_input" class="input_label">Kod pocztowy</label>
-                    <input type="text" id="postCode_input" class="input input--register">
+                    <input type="text" formControlName="ZipCode" id="postCode_input" class="input input--register">
                 </div>
                 <div class="inputContainer">
                     <label for="city_input" class="input_label">Miasto</label>
-                    <input type="text" id="city_input" class="input input--register">
+                    <input type="text" formControlName="City" id="city_input" class="input input--register">
                 </div>
             </div>
         </div>

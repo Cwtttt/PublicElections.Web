@@ -6,7 +6,7 @@ import { IdentityService } from '../identity/identity.service';
 export class AuthGuardService implements CanActivate {
 
   constructor(
-    public _identitySercive:IdentityService, 
+    private _identitySercive:IdentityService, 
     public router:Router) { }
 
   canActivate(): boolean{

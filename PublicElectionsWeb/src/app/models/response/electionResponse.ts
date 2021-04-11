@@ -1,7 +1,7 @@
 export class ElectionResponse{
-    Id:number
-    Name:string
-    StartDate:Date
-    EndDate:Date
-    CanParticipate:boolean
+    id:number
+    name:string
+    startDate:Date
+    endDate:Date
+    canParticipate:boolean
 }

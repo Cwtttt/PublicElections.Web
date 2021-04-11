@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPanelComponent } from './components/admin-components/admin-panel/admin-panel.component';
 import { CandidatesComponent } from './components/candidates/candidates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
+import { EmailConfirmedComponent } from './components/email-confirmed/email-confirmed.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { 
@@ -12,6 +14,10 @@ import {
 import { 
   NotAuthGuardService as NotAuthGuard 
 } from './services/not-auth-guard/not-auth-guard.service';
+
+import { 
+  RoleAuthGuardService as RoleGuard 
+} from './services/role-auth-guard/role-auth-guard.service';
 
 const routes: Routes = [
   { 
@@ -42,6 +48,20 @@ const routes: Routes = [
     path: 'candidates/:electionid',
     component: CandidatesComponent,
     canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'confirmemail',
+    component: EmailConfirmedComponent
+  },
+
+  { 
+    path: 'adminpanel', 
+    component: AdminPanelComponent, 
+    canActivate: [RoleGuard], 
+    data: { 
+      expectedRole: 'Admin'
+    } 
   }
 ];
 

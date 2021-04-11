@@ -18,6 +18,7 @@ export class CandidatesComponent implements OnInit {
   public candidates: Candidate[] = new Array();
   public myCandidate: Candidate;
   private electionId: number;
+  
   constructor(
     private _votesService: VotesService,
     private _electionsService:ElectionsService,
@@ -28,6 +29,7 @@ export class CandidatesComponent implements OnInit {
   ngOnInit(): void {
       this.route.paramMap.pipe(
       tap(params => {
+        debugger;
         this.electionId = +params.get("electionid")
         this._electionsService.getAllElectionCandidates(this.electionId).pipe(
           tap(response => this.candidates = response)

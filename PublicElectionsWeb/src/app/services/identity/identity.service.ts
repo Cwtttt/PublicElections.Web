@@ -7,15 +7,15 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/models/request/loginRequest';
 import { LoginResponse } from 'src/app/models/response/loginResponse';
+import { registerRequest } from 'src/app/models/request/registerRequest';
+import { verifyEmailRequest } from 'src/app/models/request/verifyEmailRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class IdentityService {
-  private baseUrl:string;
   private jwtHelper: JwtHelperService = new JwtHelperService()
-  private userToken: string;
   
   constructor(private http: HttpClient, private router:Router) {
     
@@ -28,8 +28,9 @@ export class IdentityService {
       }
     }).pipe(
         tap((response) => {
+          console.log(response);
+
           localStorage.setItem('token', response.token);
-          this.userToken = response.token;
         }),
         catchError((error) => {
           console.log(error);
@@ -38,13 +39,36 @@ export class IdentityService {
       )
   }
 
-  public isAuthenticated(): boolean {
+  isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  public logOut(): void{
+  logOut(): void{
     localStorage.clear();
     this.router.navigate(['dashboard']);
+  }
+
+  register(model: registerRequest){
+    return this.http.post<any>(environment.apiBaseUrl + 'identity/register', model, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).pipe(
+        catchError((error) => {
+          console.log(error);
+          return throwError(error);
+        }
+      )
+    )
+  }
+
+  verifyEmail(model: verifyEmailRequest){
+    debugger;
+    return this.http.post<any>(environment.apiBaseUrl + 'identity/verifyemail', model,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 }
