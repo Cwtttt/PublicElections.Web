@@ -9,7 +9,7 @@
         class="alert alert-danger">
 
         <label *ngIf="form.controls.Email.errors.required" style="color: red;">
-          Name is required.
+          Email jest wymagany
         </label>
 
       </div>
@@ -19,11 +19,11 @@
       <div *ngIf="form.controls.Email.invalid && (form.controls.Email.dirty || form.controls.Email.touched)"
       class="alert alert-danger">
 
-      <label *ngIf="form.controls.Email.errors.required" style="color: red;">
-        Name is required.
-      </label>
+        <label *ngIf="form.controls.Email.errors.required" style="color: red;">
+          Hasło jest wymagane
+        </label>
 
-    </div>
+      </div>
     </div>
     <input type="submit" class="btn btn--white" value="Zaloguj">
   </form>
