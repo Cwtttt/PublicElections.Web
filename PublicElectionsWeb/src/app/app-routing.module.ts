@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './components/admin-components/admin-panel/admin-panel.component';
+import { EditCandidatesComponent } from './components/admin-components/edit-candidates/edit-candidates.component';
+import { ElectionResultsComponent } from './components/admin-components/election-results/election-results.component';
 import { CandidatesComponent } from './components/candidates/candidates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ElectionsListComponent } from './components/elections-list/elections-list.component';
@@ -58,6 +60,24 @@ const routes: Routes = [
   { 
     path: 'adminpanel', 
     component: AdminPanelComponent, 
+    canActivate: [RoleGuard], 
+    data: { 
+      expectedRole: 'Admin'
+    } 
+  },
+
+  { 
+    path: 'adminpanel/candidates/:electionid', 
+    component: EditCandidatesComponent, 
+    canActivate: [RoleGuard], 
+    data: { 
+      expectedRole: 'Admin'
+    } 
+  },
+
+  { 
+    path: 'adminpanel/results/:electionid', 
+    component: ElectionResultsComponent, 
     canActivate: [RoleGuard], 
     data: { 
       expectedRole: 'Admin'

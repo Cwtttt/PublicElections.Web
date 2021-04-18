@@ -1,0 +1,40 @@
+<body class="admin_body">
+    <main class="main--admin">
+        <div class="vote_top">
+          <div>
+            <a href="adminpanel" class="list_link blue"> Wróć do przeglądu wyborów</a>
+          </div>
+        </div>
+        <ng-container *ngIf="electionResults.votesAmmount; else greater">
+          <section class="wrapTopBar">
+            <h1>Wyniki</h1>
+          </section>
+        </ng-container>
+        <ng-template #greater>
+          <section class="wrapTopBar">
+            <h1>Wyniki - liczba głosów: {{electionResults.votesAmmount}}</h1>
+          </section>
+        </ng-template>
+        
+        <section class="wrapContant">
+          <form action="">
+            <ng-container *ngIf="electionResults.candidatesResults.length > 0">
+              <table class="vote_table vote_table--admin">
+                <tr>
+                  <th>Imię i nazwisko kandydata</th>
+                  <th>Wynik</th>
+                </tr>
+                <ng-container  *ngFor="let candidate of electionResults.candidatesResults">
+                  <tr>
+                    <td>{{candidate.candidateName}}</td>
+                    <td>
+                        {{candidate.percentages | percent : '1.2-2'}}
+                    </td>
+                  </tr>
+                </ng-container >
+              </table>
+            </ng-container>
+            
+          </form>
+        </section>
+      </main></body>

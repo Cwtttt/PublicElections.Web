@@ -235,7 +235,8 @@ h2{
 .list_link{
     text-decoration: none;
     display:block;
-    max-width:200px;
+    max-width:201px;
+    cursor: pointer;
 }
 .list_link::after{
     content:' ';
@@ -482,6 +483,28 @@ input[type=checkbox]{
 .custom-dialog-container-add-election .mat-dialog-container{
     border-radius: 10px !important;
 }
+
+.mat-dialog-title {
+    text-align: center;
+}
+
+.confirm-btn{
+    margin-left: auto;
+    margin-right: 0;
+    border-color: #1d7fff;
+    border-style: solid;
+}
+
+.cancel-btn{
+    background-color: white;
+    color: red;
+    border: 1px;
+    border-style: solid;
+    border-color: red;
+}
+
+
+
 
 @media screen and (max-width: 1400px){
    :root{

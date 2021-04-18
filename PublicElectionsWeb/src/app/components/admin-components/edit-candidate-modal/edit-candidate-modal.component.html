@@ -1,0 +1,17 @@
+
+<h2 mat-dialog-title>
+</h2>
+<mat-dialog-content [formGroup]="form">
+  
+    <mat-form-field class="nazwa-wyborow">
+        <input type="text" matInput
+                placeholder="Nazwa wyborów"
+                formControlName="name">
+    </mat-form-field>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="cancel()">Anuluj</button>
+    <button class="mat-raised-button mat-primary" (click)="confirm()">Zapisz</button>
+</mat-dialog-actions>

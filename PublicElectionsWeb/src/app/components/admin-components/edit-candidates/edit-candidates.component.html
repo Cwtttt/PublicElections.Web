@@ -1,0 +1,37 @@
+<body class="admin_body">
+<main class="main--admin">
+    <div class="vote_top">
+      <div>
+        <a href="adminpanel" class="list_link blue"> Wróć do przeglądu wyborów</a>
+      </div>
+    </div>
+    <section class="wrapTopBar">
+      <h1>Kandydaci</h1>
+      <div>
+        <button id="addElections" (click)="candidateAdd()" class="wrapTopBar__btn">Dodaj kandydata</button>
+      </div>
+    </section>
+    
+    <section class="wrapContant">
+      <form action="">
+        <ng-container *ngIf="candidates.length > 0">
+          <table class="vote_table vote_table--admin">
+            <tr>
+              <th>Imię i nazwisko kandydata</th>
+              <th></th>
+            </tr>
+            <ng-container  *ngFor="let candidate of candidates">
+              <tr>
+                <td>{{candidate.name}}</td>
+                <td>
+                  <a class="edit" (click)="candidateEdit(candidate)">edytuj</a>
+                  <a class="edit" (click)="candidateDelete(candidate)" style="color: red;">usuń</a>
+                </td>
+              </tr>
+            </ng-container >
+          </table>
+        </ng-container>
+        
+      </form>
+    </section>
+  </main></body>

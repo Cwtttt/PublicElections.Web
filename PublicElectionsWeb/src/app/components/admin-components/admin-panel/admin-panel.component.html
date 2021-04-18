@@ -5,7 +5,6 @@
       <h1>Wybory</h1>
       <div>
         <button id="addElections" class="wrapTopBar__btn" (click)="electionAdd()">Dodaj wybory</button>
-        <button class="wrapTopBar__btn btn2">Usuń zaznaczone</button>
       </div>
     </section>
     
@@ -13,7 +12,6 @@
       <form action="">
         <table class="vote_table vote_table--admin">
           <tr>
-            <th></th>
             <th>Nazwa wyborów</th>
             <th>Początek</th>
             <th>Koniec</th>
@@ -21,14 +19,14 @@
           </tr>
           <ng-container *ngFor="let election of elections">
             <tr>
-              <td><input type="checkbox"></td>
               <td>{{election.name}}</td>
               <td>{{election.startDate | date:'d.M.yy  h:mm'}}</td>
               <td>{{election.endDate | date:'d.M.yy  h:mm'}}</td>
               <td>
                 <a class="edit" (click)="electionEdit(election)">edycja</a>
-                <a class="edit">kandydaci</a>
-                <a class="edit">wyniki</a>
+                <a class="edit" (click)="goToCandidates(election.id)">kandydaci</a>
+                <a class="edit" (click)="goToElectionResults(election.id)">wyniki</a>
+                <a (click)="electionDelete(election)" style="color: red;" class="edit">usuń</a>
               </td>
             </tr>
           </ng-container>

@@ -9,6 +9,7 @@ import { ElectionResponse } from 'src/app/models/response/electionResponse';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { ElectionRequest } from 'src/app/models/response/electionRequest';
+import { electionResultResponse } from 'src/app/models/response/electionResultResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +78,26 @@ export class ElectionsService {
         'Authorization': `Bearer ${this.userToken}`
       }
     })
+  }
+
+  delete(id: number){
+    return this.http.delete(environment.apiBaseUrl + `elections/${id}`, 
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    })
+  }
+
+  getElectionResults(electionId: number){
+    debugger;
+    return this.http.get<any>(environment.apiBaseUrl + `elections/results/${electionId}`,
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    });
   }
 }

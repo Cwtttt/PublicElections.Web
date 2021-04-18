@@ -10,14 +10,14 @@
         <form>
           <div *ngIf="candidates.length > 0">
             <table class="vote_table">
-                  <ng-container  *ngFor="let candidate of candidates">
-                    <tr>
-                      <td>{{candidate.name}}</td>
-                      <td>
-                        <input type="checkbox" (change)="choose(candidate)" [(ngModel)]="candidate.selected" [ngModelOptions]="{standalone: true}"/>
-                      </td>
-                    </tr>
-                  </ng-container >
+              <ng-container  *ngFor="let candidate of candidates">
+                <tr>
+                  <td>{{candidate.name}}</td>
+                  <td>
+                    <input type="checkbox" (change)="choose(candidate)" [(ngModel)]="candidate.selected" [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+              </ng-container >
             </table>
           </div>
           <ng-container *ngIf="myCandidate; else grayButton">
