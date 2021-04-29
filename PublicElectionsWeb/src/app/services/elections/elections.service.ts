@@ -91,7 +91,6 @@ export class ElectionsService {
   }
 
   getElectionResults(electionId: number){
-    debugger;
     return this.http.get<any>(environment.apiBaseUrl + `elections/results/${electionId}`,
     {
       headers:{

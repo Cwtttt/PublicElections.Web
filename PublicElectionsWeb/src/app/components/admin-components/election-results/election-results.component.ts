@@ -22,10 +22,8 @@ export class ElectionResultsComponent implements OnInit {
     this.route.paramMap.pipe(
       tap(params => {
         const id = +params.get("electionid")
-        debugger;
         this._electionsService.getElectionResults(id).pipe(
           tap((response) => {
-            debugger;
             console.log(response);
             this.electionResults = response;
           })

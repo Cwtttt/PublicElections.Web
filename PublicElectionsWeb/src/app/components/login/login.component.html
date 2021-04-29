@@ -2,27 +2,21 @@
   <h2 class="login_container_heading">Zaloguj się do platformy</h2>
   <form [formGroup]="form" (ngSubmit)="logIn(form)">
     <div class="form-group" >
-
       <label for="email_input" class="input_label">Email</label>
       <input type="text" formControlName="Email" id="email_input" class="input">
       <div *ngIf="form.controls.Email.invalid && (form.controls.Email.dirty || form.controls.Email.touched)"
         class="alert alert-danger">
-
         <label *ngIf="form.controls.Email.errors.required" style="color: red;">
           Email jest wymagany
         </label>
-
       </div>
-
       <label for="password_input" class="input_label">Hasło</label>
       <input type="password" formControlName="Password" id="password_input" class="input">
       <div *ngIf="form.controls.Email.invalid && (form.controls.Email.dirty || form.controls.Email.touched)"
       class="alert alert-danger">
-
         <label *ngIf="form.controls.Email.errors.required" style="color: red;">
           Hasło jest wymagane
         </label>
-
       </div>
     </div>
     <input type="submit" class="btn btn--white" value="Zaloguj">

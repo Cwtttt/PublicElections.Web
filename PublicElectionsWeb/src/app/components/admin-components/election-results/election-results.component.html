@@ -5,16 +5,13 @@
             <a href="adminpanel" class="list_link blue"> Wróć do przeglądu wyborów</a>
           </div>
         </div>
-        <ng-container *ngIf="electionResults.votesAmount; else greater">
+        <ng-container *ngIf="electionResults.votesAmount">
           <section class="wrapTopBar">
-            <h1>Wyniki</h1>
+            <h1>Liczba głosów: {{electionResults.votesAmount}}</h1>
+            <h1>Uprawnieni do głosowania: {{electionResults.votesAuthorized}}</h1>
+            <h1>Frekwencja: {{electionResults.attendance}} %</h1>
           </section>
         </ng-container>
-        <ng-template #greater>
-          <section class="wrapTopBar">
-            <h1>Wyniki - liczba głosów: {{electionResults.votesAmmount}}</h1>
-          </section>
-        </ng-template>
         
         <section class="wrapContant">
           <form action="">
@@ -22,13 +19,17 @@
               <table class="vote_table vote_table--admin">
                 <tr>
                   <th>Imię i nazwisko kandydata</th>
-                  <th>Wynik</th>
+                  <th>Wynik procentowy</th>
+                  <th>Liczba głosów</th>
                 </tr>
                 <ng-container  *ngFor="let candidate of electionResults.candidatesResults">
                   <tr>
                     <td>{{candidate.candidateName}}</td>
                     <td>
-                        {{candidate.percentages | percent : '1.2-2'}}
+                        {{candidate.percentages}} %
+                    </td>
+                    <td>
+                        {{candidate.votesCount}} 
                     </td>
                   </tr>
                 </ng-container >
